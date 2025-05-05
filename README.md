@@ -178,7 +178,7 @@ print(resp.json())  # {'sentiment':'Positive'}
 - **Benchmark**: `python scripts/benchmark_inference.py`
   Measures GPU RAM (weights & peak) and latency on a sample prompt.
 - **Evaluation**: `python scripts/evaluate_sentiment.py`
-  Computes Accuracy & F1-Score on the balanced English set (120 samples). Repeat for `test_set_ar.csv`.
+  Computes Accuracy & F1-Score on the balanced English set (120 samples).
 
 ---
 
