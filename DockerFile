@@ -1,0 +1,47 @@
+# Use an optimized base image for PyTorch and transformers
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install necessary OS-level dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first to leverage Docker caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+# Login to huggingface
+RUN huggingface-cli login --token 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
+
+# Copy the rest of the application files
+COPY ./app ./app
+COPY ./config ./config
+COPY ./data ./data
+COPY ./scripts ./scripts
+COPY ./tests ./tests
+COPY ./run.sh .
+COPY ./README.md .
+
+# Download and cache the JAIS model during build for efficiency
+RUN python -c "\
+from transformers import AutoTokenizer, AutoModelForCausalLM; \
+model_name = 'inceptionai/jais-family-6p7b-chat'; \
+AutoTokenizer.from_pretrained(model_name); \
+AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True); \
+"
+
+# Expose port for FastAPI
+EXPOSE 8000
+
+# Make run.sh executable
+RUN chmod +x ./run.sh
+
+# Command to start the API server
+CMD ["./run.sh"]
