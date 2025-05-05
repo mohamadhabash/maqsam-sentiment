@@ -42,6 +42,9 @@ maqsam_sentiment/
 │   ├── test_api.py
 │   ├── test_predictor.py
 │   └── test_benchmark.py
+├── data/                    # Arabic & English customer-service call summaries test-sets
+│   ├── test_set_en.csv
+│   └── test_set_ar.csv
 ├── requirements.txt         # Python dependencies
 ├── Dockerfile               # Container build recipe
 ├── run.sh                   # Quick API start script
