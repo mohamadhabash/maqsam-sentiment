@@ -73,6 +73,8 @@ maqsam_sentiment/
 
 **Test Set**: I curated **120 customer-service call summaries** (60 English, 60 Arabic), and balanced equally across the three sentiment labels (Positive, Neutral, Negative). Summaries **mimic real-world customer interactions**, covering various problem resolutions, factual inquiries, and complaints, ensuring diverse vocabulary and structure for robust evaluation.
 
+The JAIS-Family models—developed by InceptionAI—are instruction-tuned, bilingual (English & Arabic) causal language models available in multiple sizes (590 M, 1.3 B, 2.7 B, 6.7 B parameters). They deliver strong multilingual reasoning performance across benchmarks like MMLU, EXAMS, and situational QA, and support.
+
 **Justification for Model Selection**: On a T4 GPU with 16 GB memory (as available in Google Colab), the 6.7 B parameter JAIS model in 4-bit quantization (jais-family-6p7b-chat) provides an optimal balance between model capacity and resource constraints. Full-precision (FP32/FP16) variants of this size require ~20–22 GB of RAM, exceeding T4 limits—whereas 4-bit quantization compresses the model weights to ~7.5 GB and requires only ~8.1 GB peak during inference. This configuration achieves the highest accuracy (95% Arabic, 98% English) and F1-scores (0.94/0.98) on our balanced 120-summary test set, making it the ideal choice for high-quality, resource-efficient sentiment analysis.
 
 Additionally, the lightweight BERT-based multilingual-sentiment-analysis model can be fine-tuned on domain-specific call summaries to achieve robust performance with minimal resource overhead, and smaller JAIS variants (e.g., 590 M or 1.3 B) can be adapted via LoRA (Low-Rank Adaptation) to produce compact, high-accuracy sentiment models that fit within tighter GPU memory.
