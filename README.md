@@ -140,7 +140,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 ### Docker
 ```bash
 docker build -t maqsam-sentiment .
-docker run --rm -p 8000:8000 maqsam-sentiment
+docker run --rm -e HUGGINGFACE_TOKEN=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 -p 8000:8000 maqsam-sentiment
 ```
 
 ### Google Colab + ngrok
