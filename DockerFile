@@ -10,15 +10,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
+# Take Huggingface Token as an argument
+ARG HF_TOKEN
+
+# Set Huggingface token as an environment variable
+ENV HUGGINGFACE_TOKEN=${HF_TOKEN}
+
 # Copy requirements first to leverage Docker caching
 COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-
-# Login to huggingface
-RUN huggingface-cli login --token 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
 
 # Copy the rest of the application files
 COPY ./app ./app
