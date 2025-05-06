@@ -40,8 +40,6 @@ maqsam_sentiment/
 │   └── evaluate_sentiment.py
 ├── tests/                   # Test suite
 │   ├── test_api.py
-│   ├── test_predictor.py
-│   └── test_benchmark.py
 ├── data/                    # Arabic & English customer-service call summaries test-sets
 │   ├── test_set_en.csv
 │   └── test_set_ar.csv
