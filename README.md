@@ -155,6 +155,23 @@ get_ipython().system_raw('PYTHONPATH="$PWD" uvicorn app.main:app --host 0.0.0.0 
 ```
 
 ---
+## 🧪 Running Unit Tests
+
+To verify that all components work correctly, run the test suite with pytest:
+1. Run all tests:
+   ```bash
+   pytest
+   ```
+2. Verbose output:
+   ```bash
+   pytest -v
+   ```
+3. Stop on first failure:
+   ```bash
+   pytest -x
+   ```
+
+---
 
 ## 📞 Example API Calls
 
