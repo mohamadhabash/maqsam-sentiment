@@ -19,7 +19,7 @@
 ### Technology Stack & Frameworks
 - **FastAPI** for the REST interface (synchronous endpoints)  
 - **Uvicorn** as the ASGI server  
-- **PyTorch** + **bitsandbytes** for LLM inference (supports 4-bit quantization)  
+- **PyTorch** + **HuggingFace** + **bitsandbytes** for LLM inference (supports model quantization)
 - **PyYAML** for configuration management  
 - **PyTest** & **TestClient** for unit and integration tests
 
