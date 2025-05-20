@@ -73,7 +73,7 @@ def main():
         torch.cuda.synchronize()
     latency = (time.time() - start) * 1000.0  # ms
 
-    print(f"Inference latency (1 request, max_length={cfg['model']['max_length']}): {latency:.1f} ms")
+    print(f"Inference latency (1 request): {latency:.1f} ms")
 
     if device.type == "cuda":
         peak = torch.cuda.max_memory_allocated()
